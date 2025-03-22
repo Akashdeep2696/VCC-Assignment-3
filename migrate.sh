@@ -17,4 +17,14 @@ else
 fi
 
 echo "Transferring Flask app to GCP instance..."
-gcloud compute scp app.py $INSTANCE_NAME:/home/ubuntu/ --zone $ZONE --project $>
+gcloud compute scp app.py $INSTANCE_NAME:/home/ubuntu/ --zone $ZONE --project $
+
+echo "SSH into GCP instance and set up Flask app..."
+gcloud compute ssh $INSTANCE_NAME --zone $ZONE --project $PROJECT --command "
+    sudo apt update &&
+    sudo apt install -y python3-pip &&
+    pip3 install flask &&
+    nohup python3 /home/ubuntu/app.py > /dev/null 2>&1 &
+"
+
+echo "Flask app is now running on GCP!"
