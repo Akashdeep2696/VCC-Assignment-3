@@ -1,4 +1,4 @@
-INSTANCE_NAME="Assignment-3-instance"
+INSTANCE_NAME="assignment-3-instance"
 ZONE="us-central1-a"
 PROJECT="vcc-assignment-3-454116"
 
