@@ -25,17 +25,10 @@ gcloud compute instance-groups managed set-autoscaling Assignment-3-instance-gro
 
 
 find / -type f -name "gcloud" 2>/dev/null
-
-curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-461.0.0-linux-x86_64.tar.gz
-tar -xvzf google-cloud-cli-*.tar.gz
-./google-cloud-sdk/install.sh
-
-ls ~/google-cloud-sdk/bin/gcloud
-ls /usr/local/google-cloud-sdk/bin/gcloud
-
-echo 'export PATH=$PATH:$HOME/google-cloud-sdk/bin' >> ~/.bashrc
+nano ~/.bashrc
+export PATH=$PATH:/usr/google-cloud-sdk/bin
 source ~/.bashrc
+which gcloud
+gcloud init
 
-echo 'export PATH=$PATH:/usr/local/google-cloud-sdk/bin' >> ~/.bashrc
-source ~/.bashrc
 
