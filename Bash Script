@@ -22,3 +22,23 @@ gcloud compute instance-groups managed set-autoscaling Assignment-3-instance-gro
   --target-cpu-utilization 0.75 \
   --cool-down-period 60
 
+
+
+ls -l ~/google-cloud-sdk/bin/gcloud
+
+./google-cloud-sdk/install.sh
+
+echo $PATH
+
+echo 'export PATH=$PATH:$HOME/google-cloud-sdk/bin' >> ~/.bashrc
+source ~/.bashrc
+
+echo 'export PATH=$PATH:$HOME/google-cloud-sdk/bin' >> ~/.zshrc
+source ~/.zshrc
+
+~/google-cloud-sdk/bin/gcloud version
+
+
+chmod +x ~/google-cloud-sdk/bin/gcloud
+sudo apt-get install python3
+
