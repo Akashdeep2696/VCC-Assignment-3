@@ -1,2 +1,0 @@
-ERROR: (gcloud.compute.instances.describe) Could not fetch resource:
- - Required 'compute.instances.get' permission for 'projects/vcc-assignment-3/zones/us-central1-a/instances/assignment-3-instance'
