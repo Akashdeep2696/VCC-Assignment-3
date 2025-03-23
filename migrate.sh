@@ -1,6 +1,6 @@
 INSTANCE_NAME="assignment-3-instance"
 ZONE="us-central1-a"
-PROJECT="VCC Assignment-3"
+PROJECT="vcc-assignment-3-454116"
 
 echo "Checking if instance already exists..."
 if gcloud compute instances describe $INSTANCE_NAME --zone $ZONE --project $PROJECT --quiet; then
