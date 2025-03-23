@@ -1,0 +1,24 @@
+curl https://sdk.cloud.google.com | bash
+exec -l $SHELL
+gcloud init
+
+gcloud auth login
+gcloud config set project VCC Assignment-3
+
+gcloud compute instance-templates create Assignment-3-instance-template \
+  --machine-type=e2-medium \
+  --image-project=debian-cloud \
+  --image-family=debian-11 \
+  --tags=http-server
+
+gcloud compute instance-groups managed create Assignment-3-instance-group \
+  --base-instance-name Assignment-3-instance \
+  --size 1 \
+  --template Assignment-3-instance-template \
+  --zone us-central1-a
+
+gcloud compute instance-groups managed set-autoscaling Assignment-3-instance-group \
+  --max-num-replicas 3 \
+  --target-cpu-utilization 0.75 \
+  --cool-down-period 60
+
