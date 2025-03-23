@@ -1,9 +1,9 @@
-INSTANCE_NAME="Assignment-3-instance"
+INSTANCE_NAME="assignment-3-instance"
 ZONE="us-central1-a"
 PROJECT="VCC Assignment-3"
 
 echo "Checking if instance already exists..."
-if gcloud compute instances describe $INSTANCE_NAME --zone $ZONE --project $PRO>
+if gcloud compute instances describe $INSTANCE_NAME --zone $ZONE --project $PROJECT --quiet; then
     echo "Instance already running, skipping creation."
 else
     echo "Creating a new GCP instance..."
@@ -16,10 +16,10 @@ else
         --project $PROJECT
 fi
 
-echo "Transferring Flask app to GCP instance..."
-gcloud compute scp app.py $INSTANCE_NAME:/home/ubuntu/ --zone $ZONE --project $
+echo "Transferring app to GCP instance..."
+gcloud compute scp app.py $INSTANCE_NAME:/home/ubuntu/ --zone $ZONE --project $PROJECT
 
-echo "SSH into GCP instance and set up Flask app..."
+echo "SSH into GCP instance and set up the app..."
 gcloud compute ssh $INSTANCE_NAME --zone $ZONE --project $PROJECT --command "
     sudo apt update &&
     sudo apt install -y python3-pip &&
@@ -27,4 +27,4 @@ gcloud compute ssh $INSTANCE_NAME --zone $ZONE --project $PROJECT --command "
     nohup python3 /home/ubuntu/app.py > /dev/null 2>&1 &
 "
 
-echo "Flask app is now running on GCP!"
+echo "Your app is now running on GCP!"
